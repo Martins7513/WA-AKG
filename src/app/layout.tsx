@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const APP_DESCRIPTION = "Self-hosted WhatsApp Gateway with Multi-device support, Auto-replies, API integration, and session management dashboard.";
+const APP_DESCRIPTION = "Gateway de WhatsApp auto-hospedado com múltiplos aparelhos, respostas automáticas, integração via API e painel de sessões.";
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://wa-akg.app";
 
 export const viewport: Viewport = {
@@ -39,7 +39,7 @@ export async function generateMetadata(): Promise<Metadata> {
     console.error("Failed to fetch system config for metadata:", e);
   }
 
-  const appDefaultTitle = `${appName} | Premium WhatsApp Gateway`;
+  const appDefaultTitle = `${appName} | Gateway de WhatsApp Premium`;
 
   return {
     metadataBase: new URL(APP_URL),
