@@ -20,7 +20,7 @@ RUN npx prisma generate && npm run build
 
 # Strip devDeps from node_modules after build
 # tsx needed at runtime, kept explicitly
-RUN npm prune --omit=dev && npm install --no-save tsx typescript
+RUN npm prune --omit=dev && npm install --no-save tsx typescript prisma@5.22.0
 
 # Production image
 FROM node:26-alpine AS runner
