@@ -12,7 +12,7 @@ ENV NEXTAUTH_SECRET="build_secret_must_be_at_least_32_characters_long_for_nextjs
 # Dependency layer — cache-friendly: only rerun when package*.json changes
 COPY package*.json ./
 COPY prisma ./prisma/
-RUN npm ci --legacy-peer-deps && npm cache clean --force
+RUN npm ci --legacy-peer-deps --include=dev && npm cache clean --force
 
 # Source & build
 COPY . .
@@ -37,7 +37,7 @@ COPY --from=builder --chown=node:node /app/tsconfig.json ./
 COPY --from=builder --chown=node:node /app/next.config.ts ./
 COPY --from=builder --chown=node:node /app/scripts ./scripts
 
-# Create data and upload directories with appropriate non-root ownership
+# Create data and upload dire --include=devctories with appropriate non-root ownership
 RUN mkdir -p /app/data/media /app/data/auth /app/uploads && chown -R node:node /app/data /app/uploads
 
 USER node
