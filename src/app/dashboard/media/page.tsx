@@ -136,7 +136,7 @@ export default function MediaPage() {
         setLoading(true);
         try {
             const res = await fetch("/api/media");
-            if (!res.ok) throw new Error("Failed to fetch");
+            if (!res.ok) throw new Error("Falha ao carregar");
             const responseData = await res.json();
             const mediaData = responseData?.data || {};
             setFiles(mediaData.files || []);
@@ -274,7 +274,7 @@ export default function MediaPage() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ filenames: Array.from(selected) }),
             });
-            if (!res.ok) throw new Error("Failed to delete");
+            if (!res.ok) throw new Error("Falha ao excluir");
             const responseData = await res.json();
             const data = responseData?.data;
             toast.success(t("toastDeleted", { count: data?.deleted || 0 }));

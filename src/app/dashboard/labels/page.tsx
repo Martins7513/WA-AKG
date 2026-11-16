@@ -108,11 +108,11 @@ export default function LabelsPage() {
             if (res.ok && data.data?.labels) {
                 setLabels(data.data.labels);
             } else {
-                toast.error(data.message || "Failed to load labels");
+                toast.error(data.message || "Falha ao carregar etiquetas");
             }
         } catch (error) {
             console.error(error);
-            toast.error("Error fetching labels");
+            toast.error("Erro ao carregar etiquetas");
         } finally {
             setLoading(false);
         }
@@ -121,7 +121,7 @@ export default function LabelsPage() {
     const handleCreate = async () => {
         if (!sessionId) return;
         if (!currentName.trim()) {
-            toast.error("Label name is required");
+            toast.error("O nome da etiqueta é obrigatório");
             return;
         }
 
@@ -135,16 +135,16 @@ export default function LabelsPage() {
             const data = await res.json();
 
             if (res.ok) {
-                toast.success("Label created successfully");
+                toast.success("Etiqueta criada com sucesso");
                 setIsCreateOpen(false);
                 resetForm();
                 fetchLabels();
             } else {
-                toast.error(data.message || "Failed to create label");
+                toast.error(data.message || "Falha ao criar etiqueta");
             }
         } catch (error) {
             console.error(error);
-            toast.error("Error creating label");
+            toast.error("Erro ao criar etiqueta");
         } finally {
             setSubmitting(false);
         }
@@ -153,7 +153,7 @@ export default function LabelsPage() {
     const handleEdit = async () => {
         if (!sessionId || !currentLabelId) return;
         if (!currentName.trim()) {
-            toast.error("Label name is required");
+            toast.error("O nome da etiqueta é obrigatório");
             return;
         }
 
@@ -167,16 +167,16 @@ export default function LabelsPage() {
             const data = await res.json();
 
             if (res.ok) {
-                toast.success("Label updated successfully");
+                toast.success("Etiqueta atualizada com sucesso");
                 setIsEditOpen(false);
                 resetForm();
                 fetchLabels();
             } else {
-                toast.error(data.message || "Failed to update label");
+                toast.error(data.message || "Falha ao atualizar etiqueta");
             }
         } catch (error) {
             console.error(error);
-            toast.error("Error updating label");
+            toast.error("Erro ao atualizar etiqueta");
         } finally {
             setSubmitting(false);
         }
@@ -191,17 +191,17 @@ export default function LabelsPage() {
             const data = await res.json();
 
             if (res.ok) {
-                toast.success("Label deleted successfully");
+                toast.success("Etiqueta excluída com sucesso");
                 if (expandedLabelId === labelId) {
                     setExpandedLabelId(null);
                 }
                 fetchLabels();
             } else {
-                toast.error(data.message || "Failed to delete label");
+                toast.error(data.message || "Falha ao excluir etiqueta");
             }
         } catch (error) {
             console.error(error);
-            toast.error("Error deleting label");
+            toast.error("Erro ao excluir etiqueta");
         }
     };
 
@@ -283,17 +283,17 @@ export default function LabelsPage() {
             });
 
             if (res.ok) {
-                toast.success("Chat assigned to label");
+                toast.success("Conversa adicionada à etiqueta");
                 fetchLabels();
                 if (expandedLabelId === assignLabelId) {
                     fetchChatLabels(assignLabelId);
                 }
             } else {
                 const data = await res.json();
-                toast.error(data.message || "Failed to assign label");
+                toast.error(data.message || "Falha ao atribuir etiqueta");
             }
         } catch (error) {
-            toast.error("Error assigning label");
+            toast.error("Erro ao atribuir etiqueta");
         }
     };
 
@@ -307,16 +307,16 @@ export default function LabelsPage() {
             });
 
             if (res.ok) {
-                toast.success("Chat removed from label");
+                toast.success("Conversa removida da etiqueta");
                 fetchLabels();
                 if (expandedLabelId === labelId) {
                     fetchChatLabels(labelId);
                 }
             } else {
-                toast.error("Failed to remove label");
+                toast.error("Falha ao remover etiqueta");
             }
         } catch (error) {
-            toast.error("Error removing label");
+            toast.error("Erro ao remover etiqueta");
         }
     };
 

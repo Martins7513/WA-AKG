@@ -108,7 +108,7 @@ function useDateLabel() {
 }
 
 function handleDownload(url: string, fileName: string) {
-    toast.info("Downloading...");
+    toast.info("Baixando...");
     fetch(url).then(res => { if (!res.ok) throw new Error(); return res.blob(); }).then(blob => {
         const dlUrl = window.URL.createObjectURL(blob);
         const link = document.createElement('a');
@@ -116,7 +116,7 @@ function handleDownload(url: string, fileName: string) {
         document.body.appendChild(link);
         link.click(); link.remove();
         window.URL.revokeObjectURL(dlUrl);
-    }).catch(() => toast.error("Download failed!"));
+    }).catch(() => toast.error("Falha no download!"));
 }
 
 // ─── Context Menu ──────────────────
@@ -140,7 +140,7 @@ function ContextMenu({ state, onClose, onReply, onDelete }: { state: ContextMenu
         { label: t("reply"), icon: CornerUpLeft, action: () => { onReply(state.msg); onClose(); } },
         { label: t("copy"), icon: Copy, action: () => { navigator.clipboard.writeText(state.msg.content || "").then(() => toast.success(t("copied"))).catch(() => {}); onClose(); } },
         { label: t("delete"), icon: Trash2, action: () => { onDelete(state.msg); onClose(); }, dangerous: true },
-        { label: t("info"), icon: Info, action: () => { toast.info(`ID: ${state.msg.keyId}\nStatus: ${state.msg.status}\nTime: ${new Date(state.msg.timestamp).toLocaleString()}`); onClose(); } },
+        { label: t("info"), icon: Info, action: () => { toast.info(`ID: ${state.msg.keyId}\nStatus: ${state.msg.status}\nHora: ${new Date(state.msg.timestamp).toLocaleString()}`); onClose(); } },
     ];
 
     // Adjust position to not overflow viewport
@@ -270,7 +270,7 @@ export function ChatWindow({ sessionId, jid, name, onBack }: ChatWindowProps) {
             setInput("");
             setReplyingTo(null);
             setTimeout(() => fetchMessages(), 800);
-        } catch (e: any) { toast.error(e.message || "Failed to send"); }
+        } catch (e: any) { toast.error(e.message || "Falha ao enviar"); }
     };
 
     const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -295,8 +295,8 @@ export function ChatWindow({ sessionId, jid, name, onBack }: ChatWindowProps) {
             }
             // ? : show shortcuts
             if (e.key === "?" && !e.ctrlKey && !e.metaKey && !e.shiftKey && !(e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement)) {
-                toast.success("Shortcuts", {
-                    description: "Enter: Send\nShift+Enter: New line\nEsc: Cancel reply\n?: Show this help"
+                toast.success("Atalhos", {
+                    description: "Enter: Enviar\nShift+Enter: Nova linha\nEsc: Cancelar resposta\n?: Mostrar esta ajuda"
                 });
             }
         };
@@ -318,11 +318,11 @@ export function ChatWindow({ sessionId, jid, name, onBack }: ChatWindowProps) {
         formData.append("sessionId", sessionId);
         formData.append("jid", jid);
         try {
-            toast.info(`Sending ${file.name}...`);
+            toast.info(`Enviando ${file.name}...`);
             await sendMediaMessage(formData);
-            toast.success("Sent!");
+            toast.success("Enviado!");
             setTimeout(() => fetchMessages(), 800);
-        } catch (error: any) { toast.error(error.message || "Failed to send media"); }
+        } catch (error: any) { toast.error(error.message || "Falha ao enviar mídia"); }
     };
 
     const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -377,7 +377,7 @@ export function ChatWindow({ sessionId, jid, name, onBack }: ChatWindowProps) {
             {isDragging && (
                 <div className="absolute inset-0 z-50 bg-background/80 backdrop-blur-sm border-2 border-dashed border-primary flex items-center justify-center flex-col gap-3 rounded-lg m-2">
                     <Paperclip className="h-8 w-8 text-primary" />
-                    <p className="text-lg font-semibold text-primary">Drop files here</p>
+                    <p className="text-lg font-semibold text-primary">Solte os arquivos aqui</p>
                 </div>
             )}
 
@@ -466,7 +466,7 @@ export function ChatWindow({ sessionId, jid, name, onBack }: ChatWindowProps) {
                                     {msg.fromMe && (
                                         <button onClick={() => { setReplyingTo(msg); scrollToBottom(true); }}
                                             className="self-center p-1.5 text-muted-foreground/40 hover:text-amber-500 hover:bg-amber-500/10 rounded-lg transition-all opacity-0 group-hover:opacity-100 cursor-pointer shrink-0 order-first"
-                                            title="Reply">
+                                            title="Responder">
                                             <CornerUpLeft className="h-3.5 w-3.5" />
                                         </button>
                                     )}
@@ -495,7 +495,7 @@ export function ChatWindow({ sessionId, jid, name, onBack }: ChatWindowProps) {
                                                             target.classList.remove("bg-primary/10");
                                                         }, 1500);
                                                     } else {
-                                                        toast.info("Original message not loaded in view");
+                                                        toast.info("Mensagem original não carregada na tela");
                                                     }
                                                 }}
                                             >

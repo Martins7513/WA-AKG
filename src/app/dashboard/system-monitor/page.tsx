@@ -24,7 +24,7 @@ export default function SystemMonitorPage() {
             if (result.status) {
                 setData(result.data);
             } else {
-                toast.error(result.message || "Failed to fetch metrics");
+                toast.error(result.message || "Falha ao carregar métricas");
             }
         } catch (error) {
             console.error("Monitor fetch error:", error);

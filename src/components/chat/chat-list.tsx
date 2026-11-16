@@ -72,7 +72,7 @@ function getDisplayName(chat: ChatContact): string {
 }
 
 function getMessagePreview(chat: ChatContact): string {
-    if (!chat.lastMessage?.content) return "No messages yet";
+    if (!chat.lastMessage?.content) return "Nenhuma mensagem ainda";
     const content = chat.lastMessage.content;
     if (chat.lastMessage.type !== "TEXT") {
         return `📎 ${chat.lastMessage.type.charAt(0) + chat.lastMessage.type.slice(1).toLowerCase()}`;
@@ -136,10 +136,10 @@ function LabelAssignPopover({ sessionId, jid, children }: { sessionId: string; j
                     isAssigned ? next.delete(labelId) : next.add(labelId);
                     return next;
                 });
-                toast.success(isAssigned ? "Label removed" : "Label assigned");
+                toast.success(isAssigned ? "Etiqueta removida" : "Etiqueta atribuída");
             }
         } catch (e) {
-            toast.error("Failed to update label");
+            toast.error("Falha ao atualizar etiqueta");
         }
     };
 
@@ -147,11 +147,11 @@ function LabelAssignPopover({ sessionId, jid, children }: { sessionId: string; j
         <Popover onOpenChange={(open) => { openRef.current = open; if (open) fetchLabels(); }}>
             <PopoverTrigger asChild>{children}</PopoverTrigger>
             <PopoverContent className="w-56 p-1.5" side="right" align="start">
-                <div className="text-xs font-semibold text-muted-foreground px-2 py-1.5">Assign labels</div>
+                <div className="text-xs font-semibold text-muted-foreground px-2 py-1.5">Atribuir etiquetas</div>
                 {loading ? (
                     <div className="flex items-center justify-center py-4"><Skeleton className="h-4 w-24" /></div>
                 ) : labels.length === 0 ? (
-                    <p className="text-xs text-muted-foreground px-2 py-2">No labels. Create one in Labels page.</p>
+                    <p className="text-xs text-muted-foreground px-2 py-2">Nenhuma etiqueta. Crie uma na página Etiquetas.</p>
                 ) : (
                     <div className="flex flex-col gap-0.5 max-h-48 overflow-y-auto">
                         {labels.map(label => (
@@ -186,7 +186,7 @@ function ChatContextMenu({ state, onClose, sessionId, onSelect }: { state: CtxMe
 
     const items = [
         { label: "Open chat", icon: MessageCircle, action: () => { onSelect(state.jid, state.name); onClose(); } },
-        { label: "Copy JID", icon: Info, action: () => { navigator.clipboard.writeText(state.jid).then(() => toast.success("JID copied!")); onClose(); } },
+        { label: "Copiar JID", icon: Info, action: () => { navigator.clipboard.writeText(state.jid).then(() => toast.success("JID copiado!")); onClose(); } },
     ];
 
     const style: React.CSSProperties = { position: "fixed", top: state.y, left: state.x, zIndex: 9999 };

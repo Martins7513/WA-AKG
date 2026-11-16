@@ -223,7 +223,7 @@ export default function BotSettingsPage() {
                                         onValueChange={(v: any) => setBotConfig(prev => ({ ...prev, botMode: v }))}
                                     >
                                         <SelectTrigger>
-                                            <SelectValue placeholder="Select Mode" />
+                                            <SelectValue placeholder="Selecione o Modo" />
                                         </SelectTrigger>
                                         <SelectContent>
                                             <SelectItem value="ALL">{t("modePublic")}</SelectItem>

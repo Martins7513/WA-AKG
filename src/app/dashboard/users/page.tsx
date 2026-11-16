@@ -91,10 +91,10 @@ export default function UsersPage() {
                 fetchUsers();
             } else {
                 const error = await res.json();
-                toast.error(error.error || "Operation failed");
+                toast.error(error.error || "Falha na operação");
             }
         } catch (error) {
-            toast.error("Operation failed");
+            toast.error("Falha na operação");
         }
     };
 
@@ -114,10 +114,10 @@ export default function UsersPage() {
                 fetchUsers();
             } else {
                 const error = await res.json();
-                toast.error(error.error || "Failed to delete");
+                toast.error(error.error || "Falha ao excluir");
             }
         } catch (error) {
-            toast.error("Failed to delete user");
+            toast.error("Falha ao excluir usuário");
         } finally {
             setDeleteId(null);
         }

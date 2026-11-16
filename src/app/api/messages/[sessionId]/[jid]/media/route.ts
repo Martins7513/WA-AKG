@@ -37,7 +37,7 @@ export async function POST(
             return NextResponse.json(
                 { 
                     status: false, 
-                    message: "WhatsApp Channels/Newsletters sementara waktu HANYA mendukung format gambar JPG/JPEG. Silakan gunakan format tersebut.", 
+                    message: "Canais/Newsletters do WhatsApp aceitam por enquanto APENAS imagens JPG/JPEG. Use esse formato.", 
                     error: "Unsupported media format for Newsletter" 
                 }, 
                 { status: 400 }

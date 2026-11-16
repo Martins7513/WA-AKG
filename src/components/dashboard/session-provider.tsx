@@ -54,7 +54,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
             }
         } catch (error) {
             console.error(error);
-            toast.error("Failed to fetch sessions");
+            toast.error("Falha ao carregar sessões");
         } finally {
             setLoading(false);
         }

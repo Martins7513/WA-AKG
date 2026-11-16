@@ -69,13 +69,13 @@ function InteractiveContent() {
     const [isSendingCustom, setIsSendingCustom] = useState(false);
 
     // Custom composer state
-    const [title, setTitle] = useState("Pengumuman Penting");
-    const [body, setBody] = useState("Halo! Ini adalah pesan interaktif native flow WhatsApp. Silakan pilih aksi di bawah:");
-    const [footer, setFooter] = useState("Powered by WA-AKG Bot");
+    const [title, setTitle] = useState("Aviso Importante");
+    const [body, setBody] = useState("Olá! Esta é uma mensagem interativa do WhatsApp. Escolha uma ação abaixo:");
+    const [footer, setFooter] = useState("Enviado por WA-AKG Bot");
     const [buttons, setButtons] = useState<InteractiveButtonItem[]>([
-        { id: "1", type: "quick_reply", displayText: "Konfirmasi Pesanan", value: "confirm_order" },
-        { id: "2", type: "cta_url", displayText: "Kunjungi Website", value: "https://google.com" },
-        { id: "3", type: "cta_copy", displayText: "Salin Voucher DISKON", value: "DISKON50" },
+        { id: "1", type: "quick_reply", displayText: "Confirmar Pedido", value: "confirm_order" },
+        { id: "2", type: "cta_url", displayText: "Visitar Site", value: "https://google.com" },
+        { id: "3", type: "cta_copy", displayText: "Copiar Cupom DESCONTO", value: "DESCONTO50" },
     ]);
 
     // Format target phone into WhatsApp JID
@@ -111,13 +111,13 @@ function InteractiveContent() {
             description: t("presets.quickReplyDescription"),
             badge: t("presets.quickReplyBadge"),
             payload: {
-                title: "Konfirmasi Layanan",
-                body: "Halo! Apakah Anda ingin melanjutkan konfirmasi dan aktivasi layanan sekarang?",
-                footer: "Pilih salah satu tombol di bawah",
+                title: "Confirmação de Serviço",
+                body: "Olá! Deseja confirmar e ativar o serviço agora?",
+                footer: "Escolha um dos botões abaixo",
                 buttons: [
-                    { type: "quick_reply", displayText: "✅ Ya, Lanjutkan", id: "btn_yes" },
-                    { type: "quick_reply", displayText: "❌ Batalkan", id: "btn_no" },
-                    { type: "quick_reply", displayText: "💬 Tanya Admin", id: "btn_cs" }
+                    { type: "quick_reply", displayText: "✅ Sim, Continuar", id: "btn_yes" },
+                    { type: "quick_reply", displayText: "❌ Cancelar", id: "btn_no" },
+                    { type: "quick_reply", displayText: "💬 Falar com o Suporte", id: "btn_cs" }
                 ]
             }
         },
@@ -128,13 +128,13 @@ function InteractiveContent() {
             description: t("presets.ctaDescription"),
             badge: t("presets.ctaBadge"),
             payload: {
-                title: "Promo Spesial Hari Ini! 🎉",
-                body: "Dapatkan penawaran terbatas! Gunakan tombol di bawah untuk langsung membuka promo, menghubungi kami, atau menyalin kode voucher.",
-                footer: "Syarat & ketentuan berlaku",
+                title: "Promoção Especial de Hoje! 🎉",
+                body: "Oferta por tempo limitado! Use os botões abaixo para abrir a promoção, falar com a gente ou copiar o cupom.",
+                footer: "Sujeito a termos e condições",
                 buttons: [
-                    { type: "cta_url", displayText: "🌐 Buka Promo Website", url: "https://google.com" },
-                    { type: "cta_call", displayText: "📞 Hubungi Hotline", phoneNumber: "+628123456789" },
-                    { type: "cta_copy", displayText: "📋 Salin Kupon: HEMAT50", copyCode: "HEMAT50" }
+                    { type: "cta_url", displayText: "🌐 Abrir Promoção no Site", url: "https://google.com" },
+                    { type: "cta_call", displayText: "📞 Ligar para a Central", phoneNumber: "+628123456789" },
+                    { type: "cta_copy", displayText: "📋 Copiar Cupom: PROMO50", copyCode: "PROMO50" }
                 ]
             }
         },
@@ -145,27 +145,27 @@ function InteractiveContent() {
             description: t("presets.listDescription"),
             badge: t("presets.listBadge"),
             payload: {
-                title: "Katalog Pilihan Layanan",
-                body: "Silakan tekan tombol 'Buka Pilihan Menu' untuk melihat daftar layanan dan memilih opsi yang diinginkan:",
-                footer: "Pilih dari daftar menu interaktif",
+                title: "Catálogo de Serviços",
+                body: "Toque em 'Abrir Menu de Opções' para ver a lista de serviços e escolher a opção desejada:",
+                footer: "Escolha no menu interativo",
                 buttons: [
                     {
                         type: "single_select",
-                        title: "Daftar Layanan",
-                        buttonText: "📋 Buka Pilihan Menu",
+                        title: "Lista de Serviços",
+                        buttonText: "📋 Abrir Menu de Opções",
                         sections: [
                             {
-                                title: "Layanan Utama",
+                                title: "Serviços Principais",
                                 rows: [
-                                    { id: "srv_wa", title: "WhatsApp Gateway", description: "Layanan broadcast & integrasi API" },
-                                    { id: "srv_bot", title: "Smart Chatbot AI", description: "Otomasi customer service 24/7" }
+                                    { id: "srv_wa", title: "WhatsApp Gateway", description: "Disparos e integração via API" },
+                                    { id: "srv_bot", title: "Chatbot com IA", description: "Atendimento automático 24/7" }
                                 ]
                             },
                             {
-                                title: "Bantuan & Dukungan",
+                                title: "Ajuda e Suporte",
                                 rows: [
-                                    { id: "srv_faq", title: "Pusat Bantuan / FAQ", description: "Pertanyaan seputar integrasi" },
-                                    { id: "srv_agent", title: "Hubungkan ke Live Agent", description: "Konsultasi langsung dengan tim support" }
+                                    { id: "srv_faq", title: "Central de Ajuda / FAQ", description: "Dúvidas sobre integração" },
+                                    { id: "srv_agent", title: "Falar com Atendente ao Vivo", description: "Atendimento direto com o suporte" }
                                 ]
                             }
                         ]
@@ -180,12 +180,12 @@ function InteractiveContent() {
             description: t("presets.announcementDescription"),
             badge: t("presets.announcementBadge"),
             payload: {
-                title: "📢 PEMBERITAHUAN PEMELIHARAAN SISTEM",
-                body: "Halo rekan-rekan, sistem server akan melakukan peningkatan infrastruktur pada malam ini pukul 23:00 - 01:00 WIB. Layanan akan kembali normal setelah proses selesai.",
-                footer: "Tim Teknis WhatsApp AKG",
+                title: "📢 AVISO DE MANUTENÇÃO DO SISTEMA",
+                body: "Olá a todos, o servidor passará por uma atualização hoje entre 23:00 e 01:00. O serviço volta ao normal assim que terminar.",
+                footer: "Equipe Técnica",
                 buttons: [
-                    { type: "quick_reply", displayText: "👍 Saya Mengerti", id: "ack_ok" },
-                    { type: "cta_url", displayText: "📖 Cek Status Server", url: "https://google.com" }
+                    { type: "quick_reply", displayText: "👍 Entendi", id: "ack_ok" },
+                    { type: "cta_url", displayText: "📖 Ver Status do Servidor", url: "https://google.com" }
                 ]
             }
         }
@@ -295,10 +295,10 @@ function InteractiveContent() {
                     return {
                         type: "single_select",
                         title: b.displayText || "Menu",
-                        buttonText: b.displayText || "Select Option",
+                        buttonText: b.displayText || "Escolher Opção",
                         sections: [
                             {
-                                title: "Options",
+                                title: "Opções",
                                 rows: items.map((it, i) => ({ id: `row_${i}`, title: it, description: "" }))
                             }
                         ]
@@ -594,11 +594,11 @@ function InteractiveContent() {
                                                                 <SelectValue />
                                                             </SelectTrigger>
                                                             <SelectContent>
-                                                                <SelectItem value="quick_reply">Quick Reply</SelectItem>
-                                                                <SelectItem value="cta_url">Open URL</SelectItem>
-                                                                <SelectItem value="cta_call">Call Phone</SelectItem>
-                                                                <SelectItem value="cta_copy">Copy Code</SelectItem>
-                                                                <SelectItem value="single_select">List Menu</SelectItem>
+                                                                <SelectItem value="quick_reply">Resposta Rápida</SelectItem>
+                                                                <SelectItem value="cta_url">Abrir Link</SelectItem>
+                                                                <SelectItem value="cta_call">Ligar</SelectItem>
+                                                                <SelectItem value="cta_copy">Copiar Código</SelectItem>
+                                                                <SelectItem value="single_select">Menu em Lista</SelectItem>
                                                             </SelectContent>
                                                         </Select>
                                                     </div>
@@ -668,7 +668,7 @@ function InteractiveContent() {
                                                             onChange={(e) =>
                                                                 handleUpdateButton(btn.id, "value", e.target.value)
                                                             }
-                                                            placeholder="Option 1, Option 2, Option 3"
+                                                            placeholder="Opção 1, Opção 2, Opção 3"
                                                             className="h-8 text-xs"
                                                         />
                                                     )}

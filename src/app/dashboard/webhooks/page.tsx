@@ -169,11 +169,11 @@ export default function WebhooksPage() {
             const targetSessionId = webhook.sessionId || sessionId;
             const res = await fetch(`/api/webhooks/${targetSessionId}/${webhook.id}/test`, { method: "POST" });
             const data = await res.json();
-            setTestResults(prev => ({ ...prev, [webhook.id]: data?.data || { success: false, error: "No response" } }));
+            setTestResults(prev => ({ ...prev, [webhook.id]: data?.data || { success: false, error: "Sem resposta" } }));
             if (data?.data?.success) {
                 toast.success(t("toastTestSuccess"));
             } else {
-                toast.error(t("toastTestFailed", { error: data?.data?.error || "Unknown error" }));
+                toast.error(t("toastTestFailed", { error: data?.data?.error || "Erro desconhecido" }));
             }
         } catch (error: any) {
             setTestResults(prev => ({ ...prev, [webhook.id]: { success: false, error: error.message } }));
@@ -347,7 +347,7 @@ export default function WebhooksPage() {
     // Format timestamp
     const formatTime = (ts: string) => {
         const d = new Date(ts);
-        return d.toLocaleString("id-ID", { timeZone: "Asia/Jakarta" });
+        return d.toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" });
     };
 
     return (

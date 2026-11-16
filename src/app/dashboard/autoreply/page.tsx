@@ -90,7 +90,7 @@ export default function AutoReplyPage() {
             setRules(data as unknown as AutoReply[]);
         } catch (error: any) {
             console.error(error);
-            toast.error(error.message || "Error fetching auto-replies");
+            toast.error(error.message || "Erro ao carregar respostas automáticas");
         } finally {
             setLoading(false);
         }
@@ -122,7 +122,7 @@ export default function AutoReplyPage() {
             resetForm();
         } catch (error: any) {
             console.error(error);
-            toast.error(error.message || "Error creating auto-reply");
+            toast.error(error.message || "Erro ao criar resposta automática");
         } finally {
             setSubmitting(false);
         }
@@ -137,7 +137,7 @@ export default function AutoReplyPage() {
             fetchRules();
         } catch (error: any) {
             console.error(error);
-            toast.error(error.message || "Error deleting auto-reply");
+            toast.error(error.message || "Erro ao excluir resposta automática");
         }
     };
 
@@ -185,7 +185,7 @@ export default function AutoReplyPage() {
             fetchRules();
         } catch (error: any) {
             console.error(error);
-            toast.error(error.message || "Error updating auto-reply");
+            toast.error(error.message || "Erro ao atualizar resposta automática");
         } finally {
             setSubmitting(false);
         }

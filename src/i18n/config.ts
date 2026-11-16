@@ -22,7 +22,7 @@ export function isLocale(value: unknown): value is Locale {
 
 /**
  * Match a raw value (cookie, env var) to a supported locale.
- * Case-insensitive, and falls back to the base language: "pt-br" → "pt-BR", "id-ID" → "id", "en-US" → "en".
+ * Case-insensitive, and falls back to the base language: "pt-br" → "pt-BR", "pt-BR" → "id", "en-US" → "en".
  */
 export function matchLocale(value: string | null | undefined): Locale | undefined {
     if (!value) return undefined;

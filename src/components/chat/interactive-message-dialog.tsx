@@ -71,11 +71,11 @@ export function InteractiveMessageDialog({
 
     // Custom composer state
     const [title, setTitle] = useState("");
-    const [body, setBody] = useState("Halo! Terima kasih telah menghubungi kami. Silakan pilih opsi di bawah ini:");
-    const [footer, setFooter] = useState("Otomasi Pesan WhatsApp");
+    const [body, setBody] = useState("Olá! Obrigado por entrar em contato. Escolha uma opção abaixo:");
+    const [footer, setFooter] = useState("Automação de Mensagens WhatsApp");
     const [buttons, setButtons] = useState<InteractiveButtonItem[]>([
-        { id: "1", type: "quick_reply", displayText: "Konfirmasi Pesanan", value: "confirm_order" },
-        { id: "2", type: "cta_url", displayText: "Kunjungi Website", value: "https://google.com" },
+        { id: "1", type: "quick_reply", displayText: "Confirmar Pedido", value: "confirm_order" },
+        { id: "2", type: "cta_url", displayText: "Visitar Site", value: "https://google.com" },
     ]);
     const [submittingCustom, setSubmittingCustom] = useState(false);
 
@@ -90,13 +90,13 @@ export function InteractiveMessageDialog({
             description: t("presets.quickReplyDescription"),
             badge: t("presets.quickReplyBadge"),
             payload: {
-                title: "Konfirmasi Layanan",
-                body: `Halo kak ${displayName}! Apakah Anda ingin melanjutkan transaksi dan mengonfirmasi pesanan hari ini?`,
-                footer: "Balas dengan memilih salah satu tombol",
+                title: "Confirmação de Serviço",
+                body: `Olá, ${displayName}! Deseja continuar e confirmar seu pedido hoje?`,
+                footer: "Responda escolhendo um dos botões",
                 buttons: [
-                    { type: "quick_reply", displayText: "✅ Ya, Lanjutkan", id: "btn_yes" },
-                    { type: "quick_reply", displayText: "❌ Batalkan", id: "btn_no" },
-                    { type: "quick_reply", displayText: "💬 Tanya CS", id: "btn_cs" }
+                    { type: "quick_reply", displayText: "✅ Sim, Continuar", id: "btn_yes" },
+                    { type: "quick_reply", displayText: "❌ Cancelar", id: "btn_no" },
+                    { type: "quick_reply", displayText: "💬 Falar com Atendimento", id: "btn_cs" }
                 ]
             }
         },
@@ -107,13 +107,13 @@ export function InteractiveMessageDialog({
             description: t("presets.ctaDescription"),
             badge: t("presets.ctaBadge"),
             payload: {
-                title: "Promo Spesial Hari Ini! 🎉",
-                body: "Dapatkan diskon potongan hingga 50% untuk pesanan Anda. Gunakan kode promo eksklusif berikut sebelum habis!",
-                footer: "Syarat & ketentuan berlaku",
+                title: "Promoção Especial de Hoje! 🎉",
+                body: "Ganhe até 50% de desconto no seu pedido. Use o código exclusivo abaixo antes que acabe!",
+                footer: "Sujeito a termos e condições",
                 buttons: [
-                    { type: "cta_url", displayText: "🌐 Kunjungi Website", url: "https://google.com" },
-                    { type: "cta_call", displayText: "📞 Hubungi Support", phoneNumber: "+628123456789" },
-                    { type: "cta_copy", displayText: "📋 Salin Kode: DISKON50", copyCode: "DISKON50" }
+                    { type: "cta_url", displayText: "🌐 Visitar Site", url: "https://google.com" },
+                    { type: "cta_call", displayText: "📞 Ligar para o Suporte", phoneNumber: "+628123456789" },
+                    { type: "cta_copy", displayText: "📋 Copiar Código: DESCONTO50", copyCode: "DESCONTO50" }
                 ]
             }
         },
@@ -124,27 +124,27 @@ export function InteractiveMessageDialog({
             description: t("presets.listDescription"),
             badge: t("presets.listBadge"),
             payload: {
-                title: "Katalog Layanan Kami",
-                body: "Pilih salah satu menu atau layanan yang ingin Anda ketahui lebih detail melalui tombol menu di bawah:",
-                footer: "Pilih dari daftar menu",
+                title: "Nosso Catálogo de Serviços",
+                body: "Escolha um menu ou serviço para saber mais pelo botão abaixo:",
+                footer: "Escolha no menu",
                 buttons: [
                     {
                         type: "single_select",
-                        title: "Daftar Layanan",
-                        buttonText: "📋 Buka Pilihan Menu",
+                        title: "Lista de Serviços",
+                        buttonText: "📋 Abrir Menu de Opções",
                         sections: [
                             {
-                                title: "Layanan Utama",
+                                title: "Serviços Principais",
                                 rows: [
-                                    { id: "srv_wa", title: "WhatsApp Gateway", description: "Layanan broadcast & otomasi chat" },
-                                    { id: "srv_bot", title: "Smart Chatbot AI", description: "Otomasi customer service 24/7" }
+                                    { id: "srv_wa", title: "WhatsApp Gateway", description: "Disparos e automação de conversas" },
+                                    { id: "srv_bot", title: "Chatbot com IA", description: "Atendimento automático 24/7" }
                                 ]
                             },
                             {
-                                title: "Bantuan & Dukungan",
+                                title: "Ajuda e Suporte",
                                 rows: [
-                                    { id: "srv_faq", title: "FAQ & Panduan", description: "Pertanyaan yang sering diajukan" },
-                                    { id: "srv_agent", title: "Bicara dengan Agen", description: "Terhubung langsung dengan staf CS" }
+                                    { id: "srv_faq", title: "Perguntas Frequentes e Guias", description: "Perguntas mais comuns" },
+                                    { id: "srv_agent", title: "Falar com um Atendente", description: "Fale direto com nossa equipe" }
                                 ]
                             }
                         ]
@@ -159,12 +159,12 @@ export function InteractiveMessageDialog({
             description: t("presets.announcementDescription"),
             badge: t("presets.announcementBadge"),
             payload: {
-                title: "📢 PEMBERITAHUAN SISTEM",
-                body: "Halo, sistem kami akan melakukan pemeliharaan rutin pada malam ini pukul 23:00 WIB. Terima kasih atas pengertian Anda.",
-                footer: "Pusat Informasi Otomasi",
+                title: "📢 AVISO DO SISTEMA",
+                body: "Olá, nosso sistema passará por manutenção hoje às 23:00. Obrigado pela compreensão.",
+                footer: "Central de Informações",
                 buttons: [
-                    { type: "quick_reply", displayText: "👍 Mengerti", id: "ack_ok" },
-                    { type: "cta_url", displayText: "📖 Baca Catatan Rilis", url: "https://google.com" }
+                    { type: "quick_reply", displayText: "👍 Entendi", id: "ack_ok" },
+                    { type: "cta_url", displayText: "📖 Ver Novidades", url: "https://google.com" }
                 ]
             }
         }
@@ -242,16 +242,16 @@ export function InteractiveMessageDialog({
                 } else if (b.type === "cta_call") {
                     return { type: "cta_call", displayText: b.displayText || `Telepon ${idx + 1}`, phoneNumber: b.value || "+628123456789" };
                 } else if (b.type === "cta_copy") {
-                    return { type: "cta_copy", displayText: b.displayText || `Salin Kode`, copyCode: b.value || "CODE" };
+                    return { type: "cta_copy", displayText: b.displayText || `Copiar Código`, copyCode: b.value || "CODE" };
                 } else if (b.type === "single_select") {
-                    const items = (b.value || "Opsi 1, Opsi 2").split(",").map(s => s.trim()).filter(Boolean);
+                    const items = (b.value || "Opção 1, Opção 2").split(",").map(s => s.trim()).filter(Boolean);
                     return {
                         type: "single_select",
                         title: b.displayText || "Pilihan",
-                        buttonText: b.displayText || "Pilih Opsi",
+                        buttonText: b.displayText || "Escolher Opção",
                         sections: [
                             {
-                                title: "Daftar Opsi",
+                                title: "Lista de Opções",
                                 rows: items.map((it, i) => ({ id: `row_${i}`, title: it, description: "" }))
                             }
                         ]

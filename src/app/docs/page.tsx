@@ -45,7 +45,7 @@ export default async function PublicDocsPage() {
         const packageJson = JSON.parse(fs.readFileSync(packagePath, 'utf8'));
         version = `v${packageJson.version}`;
     } catch (err) {
-        content = '# Error\n\nCould not load documentation file.';
+        content = '# Erro\n\nNão foi possível carregar a documentação.';
         console.error("Error loading docs:", err);
     }
 

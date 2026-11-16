@@ -63,11 +63,11 @@ export default function SessionDetailPage() {
                     router.push("/dashboard/sessions");
                     return;
                 }
-                throw new Error("Failed to fetch");
+                throw new Error("Falha ao carregar");
             }
             const responseData = await res.json();
             const data = responseData?.data;
-            if (!data) throw new Error("No data returned");
+            if (!data) throw new Error("Nenhum dado retornado");
             setSession(data);
             setQrCode(data.qr || null);
             setPairingCode(data.pairingCode || null);
@@ -145,7 +145,7 @@ export default function SessionDetailPage() {
             });
             const data = await res.json();
 
-            if (!res.ok) throw new Error(data.message || data.error || "Action failed");
+            if (!res.ok) throw new Error(data.message || data.error || "Falha na ação");
 
             toast.success(data.message || "Success");
 
