@@ -25,6 +25,8 @@ RUN npm prune --omit=dev && npm install --no-save tsx typescript prisma@5.22.0
 # Production image
 FROM node:26-alpine AS runner
 RUN apk add --no-cache openssl ca-certificates
+# CLI do Prisma 5 e tsx instalados globalmente para a inicialização
+RUN npm install -g prisma@5.22.0 tsx@4 && npm cache clean --force
 WORKDIR /app
 
 COPY --from=builder --chown=node:node /app/package*.json ./

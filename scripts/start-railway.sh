@@ -3,7 +3,7 @@
 # enquanto a rede interna até o MySQL sobe), cria o admin e liga o servidor.
 cd /app 2>/dev/null || true
 
-PRISMA="node node_modules/prisma/build/index.js"
+PRISMA="prisma"
 
 ok=0
 i=1
@@ -29,4 +29,4 @@ if [ "$ok" = "1" ] && [ -n "$ADMIN_EMAIL" ] && [ -n "$ADMIN_PASSWORD" ]; then
 fi
 
 export NODE_ENV=production
-exec node node_modules/tsx/dist/cli.mjs src/server/index.ts
+exec tsx src/server/index.ts
